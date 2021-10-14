@@ -4,9 +4,10 @@
 #include <algorithm>
 #include <sstream>
 #include <iostream>
+#include <cctype>
 
 Dictionary::Dictionary() {
-      fillFromFile(R"(C:\Users\1\CLionProjects\QT_task_4\dictionary.txt)");
+    fillFromFile(R"(C:\Users\1\CLionProjects\QT_task_4\dictionary.txt)");
 }
 
 Dictionary::~Dictionary() = default;
@@ -15,11 +16,7 @@ std::map<std::string, int> &Dictionary::getDictionary() {
     return dictionary;
 }
 
-//void Dictionary::setDictionary(const std::map<std::string, int> &aDictionary) {
-//    Dictionary::dictionary = aDictionary;
-//}
-
-void Dictionary::put(const std::string& word) {
+void Dictionary::put(const std::string &word) {
     auto it = dictionary.find(word);
     if (it == dictionary.end()) {
         dictionary.insert({word, 1});
@@ -28,9 +25,7 @@ void Dictionary::put(const std::string& word) {
     }
 }
 
-void Dictionary::fillFromFile(const std::string& fileName) {
-    //dictionary.clear();
-
+void Dictionary::fillFromFile(const std::string &fileName) {
     std::string res;
     std::string line;
 
@@ -52,15 +47,35 @@ void Dictionary::fillFromFile(const std::string& fileName) {
     std::istringstream ss(res);
     std::vector<std::string> v;
     while (ss >> t) {
-        std::cout << t;
+
+        std::transform(t.begin(), t.end(), t.begin(),
+                       [](unsigned char c) { return std::tolower(c); });
         put(t);
     }
 }
 
-void Dictionary::sortByAlphabet() {
-
+std::vector<std::pair<std::string, int>> Dictionary::sortByAlphabet() {
+    auto cmp = [](std::pair<std::string, int> const &a, std::pair<std::string, int> const &b) {
+        return a.first < b.first;
+    };
+    std::vector<std::pair<std::string, int>> pairs;
+    pairs.reserve(dictionary.size());
+    for (const auto &pair: dictionary) {
+        pairs.emplace_back(pair);
+    }
+    std::sort(pairs.begin(), pairs.end(), cmp);
+    return pairs;
 }
 
-void Dictionary::sortByFrequency() {
-
+std::vector<std::pair<std::string, int>> Dictionary::sortByFrequency() {
+    auto cmp = [](std::pair<std::string, int> const &a, std::pair<std::string, int> const &b) {
+        return a.second > b.second;
+    };
+    std::vector<std::pair<std::string, int>> pairs;
+    pairs.reserve(dictionary.size());
+    for (const auto &pair: dictionary) {
+        pairs.emplace_back(pair);
+    }
+    std::sort(pairs.begin(), pairs.end(), cmp);
+    return pairs;
 }

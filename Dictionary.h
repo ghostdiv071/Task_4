@@ -15,15 +15,13 @@ public:
 
     std::map<std::string, int> &getDictionary();
 
-    //void setDictionary(const std::map<std::string, int> &aDictionary);
-
     void put(const std::string& word);
 
     void fillFromFile(const std::string& fileName);
 
-    void sortByAlphabet();
+    std::vector<std::pair<std::string, int>> sortByAlphabet();
 
-    void sortByFrequency();
+    std::vector<std::pair<std::string, int>> sortByFrequency();
 };
 
 

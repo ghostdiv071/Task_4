@@ -14,7 +14,7 @@ find_package(Qt6 COMPONENTS
         Widgets
         REQUIRED)
 
-add_executable(QT_task_4 main.cpp Dictionary.cpp Dictionary.h app.cpp app.h app.ui)
+add_executable(QT_task_4 main.cpp Dictionary.cpp Dictionary.h app.cpp app.h app.ui Logger.cpp Logger.h)
 target_link_libraries(QT_task_4
         Qt::Core
         Qt::Gui

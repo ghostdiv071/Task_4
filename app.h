@@ -3,6 +3,7 @@
 
 #include <QWidget>
 #include <QListWidget>
+#include <QFileInfo>
 #include "Dictionary.h"
 
 
@@ -18,15 +19,26 @@ public:
 
     ~App() override;
 
+    void readFile(const QString& fileName);
+
+    void fillTextField(QListWidget *qListWidget, const std::vector<std::pair<std::string, int>>& pairs);
+
+    bool checkFileExtension(const QFileInfo& fileInfo);
+
+    bool checkFileName(const QString& fileName);
+
 private slots:
-    void openFromFile();
+    void addWordsFromFile();
+    void recoverFromFile();
     void saveToFile();
+    void sortByAlphabet();
     void sortByFrequency();
-    void fillTextField(QListWidget *qListWidget);
+
 
 private:
     Ui::App *ui;
     Dictionary* dictionary;
+    std::string saveFile;
     QListWidget* listWidget;
 };
 
