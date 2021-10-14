@@ -114,13 +114,3 @@ void App::fillTextField(QListWidget *qListWidget, const std::vector<std::pair<st
 bool App::checkFileExtension(const QFileInfo& fileInfo) {
     return fileInfo.suffix() == "txt";
 }
-
-bool App::checkFileName(const QString& fileName) {
-    for (auto s : fileName) {
-        if ((s >= 'a' && s <= 'z') || (s >= 'A' && s <= 'Z') || (s >= '0' && s <= '9') || (s == '_') || (s == '!')) {
-            return false;
-        }
-    }
-    return true;
-}
-

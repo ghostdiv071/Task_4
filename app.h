@@ -5,6 +5,7 @@
 #include <QListWidget>
 #include <QFileInfo>
 #include "Dictionary.h"
+#include "Logger.h"
 
 
 QT_BEGIN_NAMESPACE
@@ -25,8 +26,6 @@ public:
 
     bool checkFileExtension(const QFileInfo& fileInfo);
 
-    bool checkFileName(const QString& fileName);
-
 private slots:
     void addWordsFromFile();
     void recoverFromFile();
@@ -40,6 +39,7 @@ private:
     Dictionary* dictionary;
     std::string saveFile;
     QListWidget* listWidget;
+    Logger logger;
 };
 
 

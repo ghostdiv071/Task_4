@@ -17,10 +17,6 @@
   <component name="ChangeListManager">
     <list default="true" id="8549e1ee-ddf3-43fa-95b3-b7be8414d35a" name="Changes" comment="dictionary">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/CMakeLists.txt" beforeDir="false" afterPath="$PROJECT_DIR$/CMakeLists.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Dictionary.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Dictionary.cpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Dictionary.h" beforeDir="false" afterPath="$PROJECT_DIR$/Dictionary.h" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/app.cpp" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app.h" beforeDir="false" afterPath="$PROJECT_DIR$/app.h" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -104,7 +100,7 @@
       <option name="presentableId" value="Default" />
       <updated>1634157252146</updated>
       <workItem from="1634157254307" duration="5948000" />
-      <workItem from="1634207733415" duration="27912000" />
+      <workItem from="1634207733415" duration="29029000" />
     </task>
     <task id="LOCAL-00001" summary="dictionary">
       <created>1634236503178</created>
@@ -120,7 +116,14 @@
       <option name="project" value="LOCAL" />
       <updated>1634236573917</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL-00003" summary="dictionary">
+      <created>1634249003741</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1634249003741</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
