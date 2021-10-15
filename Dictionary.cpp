@@ -56,15 +56,10 @@ void Dictionary::fillFromFile(const std::string &fileName) {
 }
 
 std::vector<std::pair<std::string, int>> Dictionary::sortByAlphabet() {
-    auto cmp = [](std::pair<std::string, int> const &a, std::pair<std::string, int> const &b) {
-        return a.first < b.first;
-    };
     std::vector<std::pair<std::string, int>> pairs;
-    pairs.reserve(dictionary.size());
-    for (const auto &pair: dictionary) {
+    for (const auto& pair : dictionary) {
         pairs.emplace_back(pair);
     }
-    std::sort(pairs.begin(), pairs.end(), cmp);
     return pairs;
 }
 
