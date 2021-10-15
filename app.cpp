@@ -12,7 +12,7 @@ App::App(QWidget *parent) :
         QWidget(parent), ui(new Ui::App) {
     ui->setupUi(this);
     dictionary = new Dictionary();
-    Logger::log("Application is running");
+    Logger::log(DebugLevel::INFO, "Application is running");
 
     auto *mainAppLayout = new QHBoxLayout(this); // main horizontal layout
     auto *controlBlock = new QVBoxLayout(); //vertical layout with buttons
@@ -116,7 +116,6 @@ void App::fillTextField(QListWidget *qListWidget, const std::vector<std::pair<st
         QString qString = QString::fromStdString(item);
         qListWidget->addItem(qString);
     }
-    Logger::log(DebugLevel::INFO, "Widget filled with words from dictionary");
 }
 
 bool App::checkFileExtension(const QFileInfo& fileInfo) {
