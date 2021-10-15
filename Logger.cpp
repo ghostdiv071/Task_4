@@ -6,14 +6,14 @@ Logger::Logger() = default;
 
 void Logger::log(DebugLevel level, const std::string &message) {
     std::ofstream out;
-    out.open(R"(C:\Users\1\CLionProjects\QT_task_4\logs.txt)");
+    out.open(R"(C:\Users\1\CLionProjects\QT_task_4\logs.txt)", std::ios::app);
     if (out.is_open()) {
         std::string debugLevel = setDebugLevel(level) + ": ";
         std::string log;
         std::time_t time = std::chrono::system_clock::to_time_t(
                 std::chrono::system_clock::now()
         );
-        log =  ": " + message;
+        log =  " " + message;
         out << debugLevel << std::ctime(&time) << log << std::endl;
     }
 }
