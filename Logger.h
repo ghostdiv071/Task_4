@@ -4,13 +4,18 @@
 
 
 #include <string>
+#include "DebugLevel.h"
 
 class Logger {
+private:
+
+    static std::string setDebugLevel(DebugLevel level);
+
 public:
 
     Logger();
 
-    void log(const std::string& message);
+    static void log(DebugLevel level, const std::string &message);
 };
 
 

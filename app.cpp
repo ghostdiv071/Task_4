@@ -12,6 +12,7 @@ App::App(QWidget *parent) :
         QWidget(parent), ui(new Ui::App) {
     ui->setupUi(this);
     dictionary = new Dictionary();
+    Logger::log("Application is running");
 
     auto *mainAppLayout = new QHBoxLayout(this); // main horizontal layout
     auto *controlBlock = new QVBoxLayout(); //vertical layout with buttons
@@ -64,6 +65,7 @@ void App::recoverFromFile() {
 void App::saveToFile() {
     QString fileName = QFileDialog::getOpenFileName(this, "", R"(C:\Users\1\Downloads\test for task 4)");
     saveFile = fileName.toStdString();
+    Logger::log(DebugLevel::INFO, "User saves dictionary to file " + fileName.toStdString());
     QFile file(fileName);
     QFileInfo fileInfo(fileName);
     if (file.open(QIODevice::WriteOnly) && checkFileExtension(fileInfo)) {
@@ -74,6 +76,7 @@ void App::saveToFile() {
             }
         }
     } else {
+        Logger::log(DebugLevel::WARN, "Could not open file");
         qWarning("Could not open file");
     }
     file.close();
@@ -82,19 +85,23 @@ void App::saveToFile() {
 
 void App::sortByAlphabet() {
     fillTextField(listWidget, dictionary->sortByAlphabet());
+    Logger::log(DebugLevel::INFO, "Dictionary sorted by alphabet");
 }
 
 void App::sortByFrequency() {
     fillTextField(listWidget, dictionary->sortByFrequency());
+    Logger::log(DebugLevel::INFO, "Dictionary sorted by words frequency");
 }
 
 void App::readFile(const QString& fileName) {
+    Logger::log(DebugLevel::INFO, "User opens file " + fileName.toStdString());
     QFile file(fileName);
     QFileInfo fileInfo(fileName);
     if (file.open(QIODevice::ReadOnly) && checkFileExtension(fileInfo)) {
         dictionary->fillFromFile(fileName.toStdString());
         fillTextField(listWidget, dictionary->sortByAlphabet());
     } else {
+        Logger::log(DebugLevel::WARN, "Could not open file");
         qWarning("Could not open file");
     }
     file.close();
@@ -109,6 +116,7 @@ void App::fillTextField(QListWidget *qListWidget, const std::vector<std::pair<st
         QString qString = QString::fromStdString(item);
         qListWidget->addItem(qString);
     }
+    Logger::log(DebugLevel::INFO, "Widget filled with words from dictionary");
 }
 
 bool App::checkFileExtension(const QFileInfo& fileInfo) {

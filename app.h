@@ -24,7 +24,7 @@ public:
 
     void fillTextField(QListWidget *qListWidget, const std::vector<std::pair<std::string, int>>& pairs);
 
-    bool checkFileExtension(const QFileInfo& fileInfo);
+    static bool checkFileExtension(const QFileInfo& fileInfo);
 
 private slots:
     void addWordsFromFile();
@@ -39,7 +39,6 @@ private:
     Dictionary* dictionary;
     std::string saveFile;
     QListWidget* listWidget;
-    Logger logger;
 };
 
 
